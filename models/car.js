@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 const CarSchema = mongoose.Schema({
-  brand: String,
+  brand: {
+    type: String,
+    required: [true, 'please add a brand'],
+  },
   model: String,
+  owner: String,
 });
-export default mongoose.model('Car', CarSchema);
+module.exports = mongoose.models.Car || mongoose.model('Car', CarSchema);
